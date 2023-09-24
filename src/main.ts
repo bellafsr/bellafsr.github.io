@@ -1,7 +1,35 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { Routes, provideRouter, withComponentInputBinding } from '@angular/router';
+import { HomeComponent } from './app/pages/home/home.component';
+import { LoginComponent } from './app/pages/login/login.component';
+import { StoreComponent } from './app/pages/store/store.component';
+import { AppComponent } from './app/app.component';
 
-import { AppModule } from './app/app.module';
+const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'store/:storeId',
+    component: StoreComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
+  }
+];
 
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  bootstrapApplication(AppComponent, {
+    providers: [
+      provideRouter(
+        routes,
+        withComponentInputBinding()
+      ),
+    ]
+  });
