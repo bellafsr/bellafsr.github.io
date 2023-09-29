@@ -21,11 +21,11 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
-    path: '',
+    path: 'home',
     component: MainComponent,
     children: [
       {

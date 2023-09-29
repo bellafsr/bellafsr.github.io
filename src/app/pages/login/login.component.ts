@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
     PasswordModule,
     ButtonModule,
     ReactiveFormsModule,
+    RouterModule,
   ]
 })
 export class LoginComponent {
@@ -23,12 +25,16 @@ export class LoginComponent {
     password: new FormControl('admin'),
   });
 
+  constructor(
+    private readonly router: Router,
+  ) {}
+
   doLogin() {
     if (
       this.loginForm.value.email == 'admin' &&
       this.loginForm.value.password == 'admin'
     ) {
-      alert('login successfull')
+      this.router.navigate(['/']);
     }
   }
 }

@@ -16,7 +16,7 @@ export interface Item {
   providedIn: 'root'
 })
 export class CartService {
-  cartDrawerState = true;
+  cartDrawerState = false;
   items: Item[]= [];
 
   addToCart(item: Item): void {
