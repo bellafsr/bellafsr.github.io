@@ -8,7 +8,7 @@ describe('FinishOrderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FinishOrderComponent]
+      imports: [FinishOrderComponent]
     });
     fixture = TestBed.createComponent(FinishOrderComponent);
     component = fixture.componentInstance;

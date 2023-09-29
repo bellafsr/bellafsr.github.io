@@ -3,7 +3,7 @@
         <li class="mr-3 cursor-pointer">
             <img src="../../../assets/green-delivery-logo2.png" alt="Logo" width="36">
         </li>
-        <li class="cursor-pointer" [routerLink]="'home'">
+        <li class="cursor-pointer" [routerLink]="'/delivery'">
             Inicio
         </li>
         <li class="cursor-pointer" [routerLink]="'stores'">
@@ -12,7 +12,7 @@
         <li>
             <span class="bg-slate-100 px-3 py-2.5 rounded-sm">
                 <i class="fa-solid fa-magnifying-glass mr-3 text-green-500"></i>
-                <input type="text" pInputText class="w-96 bg-transparent" placeholder="Busque por um item ou restaurante"/>
+                <input type="text" pInputText class="w-96 bg-transparent" placeholder="Busque por um restaurante"/>
             </span>
         </li>
         <li class="ml-auto bg-green-700 p-2 rounded text-white cursor-pointer" (click)="cartService.openCart()">

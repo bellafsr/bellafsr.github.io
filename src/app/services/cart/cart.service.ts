@@ -17,11 +17,17 @@ export interface Item {
 })
 export class CartService {
   cartDrawerState = false;
-  items: Item[]= [];
+  items: Item[]= [
+  
+];
 
   addToCart(item: Item): void {
     this.items.push(item);
     this.openCart();
+  }
+
+  removeFromCart(id: number): void {
+    this.items = this.items.filter((item) => item.ID !== id);
   }
 
   openCart(): void {

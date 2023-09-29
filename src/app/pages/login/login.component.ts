@@ -34,7 +34,7 @@ export class LoginComponent {
       this.loginForm.value.email == 'admin' &&
       this.loginForm.value.password == 'admin'
     ) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/delivery']);
     }
   }
 }

@@ -1,1 +1,67 @@
-<p>finish-order works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="flex flex-wrap items-center justify-center mt-24 text-3xl font-semibold">
+                Status do seu pedido em: Hamburgueria da Lulu
+            </div>
+        </div>
+        <div class="col-md-12">
+            <span class="text-xl">
+                <div class="flex flex-wrap items-center justify-center mt-2 text-xl font-semibold ">
+                    Pedido realizado em: {{ getDate() }}
+                </div>
+            </span>
+        </div>
+        <div class="col-md-12">
+            <div class="mt-32 flex items-center justify-center">
+                <div class="flex flex-col justify-center items-center text-2xl" *ngIf="activeItem === 0">
+                    <div class="bg-green-500 text-white rounded-full w-24 h-24 flex items-center justify-center mb-10 text-center">
+                        <i class="fa-solid fa-paper-plane fa-2xl"></i>
+                    </div>
+                    {{ items[activeItem].text }}
+                </div>
+    
+                <div class="flex flex-col justify-center items-center text-2xl" *ngIf="activeItem === 1">
+                    <div class="bg-green-500 text-white rounded-full w-24 h-24 flex items-center justify-center mb-10 text-center">
+                        <i class="fa-solid fa-burger fa-2xl"></i>
+                    </div>
+                    {{ items[activeItem].text }}
+                </div>
+    
+                <div class="flex flex-col justify-center items-center text-2xl" *ngIf="activeItem === 2">
+                    <div class="bg-green-500 text-white rounded-full w-24 h-24 flex items-center justify-center mb-10 text-center">
+                        <i class="fa-solid fa-person-biking fa-2xl"></i>
+                    </div>
+                    {{ items[activeItem].text }}
+                    <button
+                        (click)="this.activeItem = 3"
+                        class="
+                            m-0
+                            mt-5
+                            h-full
+                            w-full
+                            rounded
+                            bg-green-600
+                            hover:bg-green-800
+                            text-white
+                            font-semibold
+                            py-3
+                            text-lg
+                        "
+                    >
+                        <span>
+                            Pedido Recebido!
+                        </span>
+                    </button>
+                </div>
+    
+                <div class="flex flex-col justify-center items-center text-2xl" *ngIf="activeItem === 3">
+                    <div class="bg-green-500 text-white rounded-full w-24 h-24 flex items-center justify-center mb-10 text-center">
+                        <i class="fa-solid fa-face-smile fa-2xl"></i>
+                    </div>
+                    {{ items[activeItem].text }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

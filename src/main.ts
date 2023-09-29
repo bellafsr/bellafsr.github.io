@@ -7,12 +7,8 @@ import { AppComponent } from './app/app.component';
 import { MainComponent } from './app/pages/main/main.component';
 import { StoreListComponent } from './app/pages/store-list/store-list.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { FinishOrderComponent } from './app/pages/finish-order/finish-order.component';
 
-// TODO: Create Main Component with header
-// TODO: Create Store List component and replicate at home component
-// TODO: Create Store Details Page.
-
-// TODO: Mount Store Details Page
 // TODO: Create Cart and Add Items on it
 // TODO: Create Finish Order Page
 // TODO: Create Received Order Page
@@ -25,7 +21,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'home',
+    path: 'delivery',
     component: MainComponent,
     children: [
       {
@@ -39,6 +35,10 @@ const routes: Routes = [
       {
         path: 'store/:storeId',
         component: StoreComponent
+      },
+      {
+        path: 'finish-order',
+        component: FinishOrderComponent
       },
     ]
   },

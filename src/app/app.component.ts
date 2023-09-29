@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CartService } from './services/cart/cart.service';
 import { SidebarModule } from 'primeng/sidebar';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,5 +24,10 @@ export class AppComponent {
 
   constructor(
     public readonly cartService: CartService,
+    public readonly router: Router,
   ) {}
+
+  finishOrder(): void {
+    this.router.navigate(['/delivery/finish-order']);
+  }
 }

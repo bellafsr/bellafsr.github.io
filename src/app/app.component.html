@@ -2,11 +2,61 @@
 
 <p-sidebar [(visible)]="cartService.cartDrawerState" position="right" styleClass="!w-1/4">
     <ng-template pTemplate="header">
-        <h1 class="text-2xl font-semibold">Meu Pedido</h1>
+        <h1 class="text-2xl font-semibold">Resumo do pedido</h1>
     </ng-template>
-    <h3>Sidebar</h3>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <div class="container-fluid">
+        <div class="row" *ngIf="cartService.items.length > 0">
+            <h2 class="text-lg mb-4">Seu pedido em: <span class="font-semibold">Hamburgueria da Lulu</span> </h2>
+            <ng-container *ngTemplateOutlet="itemList; context: { $implicit: cartService.items }"></ng-container>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <div>
+            <div class="flex justify-between w-full text-lg">
+                <span>Frete</span>
+                <span class="text-green-600">Grátis</span>
+            </div>
+            <hr class="my-3">
+            <div class="flex justify-between w-full text-xl font-semibold">
+                <span>Total</span>
+                <span>{{ cartService.getSubTotal | currency:'BRL' }}</span>
+            </div>
+            <button
+                [disabled]="cartService.items.length === 0"
+                (click)="finishOrder()"
+                class="
+                    m-0
+                    mt-5
+                    h-full
+                    w-full
+                    rounded
+                    bg-green-600
+                    hover:bg-green-800
+                    text-white
+                    disabled:bg-slate-300
+                    disabled:hover:bg-slate-300
+                    disabled:cursor-not-allowed
+                    font-semibold
+                    py-3
+                    text-lg
+                "
+            >
+                <span>
+                    Finalizar Pedido
+                </span>
+            </button>
+        </div>
+    </ng-template>
 </p-sidebar>
+
+<ng-template #itemList let-items>
+    <div class="col-md-12 my-3 mt-2" *ngFor="let item of items">
+        <div class="flex justify-between w-full">
+            <span class="text-md">{{ item.name }} - {{ item.quantity }}x</span>
+            <div class="text-md font-semibold">
+                {{ (item.price * item.quantity) | currency:'BRL' }}
+                <i (click)="cartService.removeFromCart(item.ID)" class="fa-solid fa-trash cursor-pointer ml-1"></i>
+            </div>
+        </div>
+    </div>
+</ng-template>
