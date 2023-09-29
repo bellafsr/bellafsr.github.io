@@ -1,1 +1,12 @@
 <router-outlet></router-outlet>
+
+<p-sidebar [(visible)]="cartService.cartDrawerState" position="right" styleClass="!w-1/4">
+    <ng-template pTemplate="header">
+        <h1 class="text-2xl font-semibold">Meu Pedido</h1>
+    </ng-template>
+    <h3>Sidebar</h3>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+</p-sidebar>

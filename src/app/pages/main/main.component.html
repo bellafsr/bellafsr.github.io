@@ -1,0 +1,28 @@
+<div class="h-20 bg-white flex justify-between items-center px-3 border-b-2 border-slate-200">
+    <ul class="max-md:hidden flex items-center w-full gap-5">
+        <li class="mr-3 cursor-pointer">
+            <img src="../../../assets/green-delivery-logo2.png" alt="Logo" width="36">
+        </li>
+        <li class="cursor-pointer" [routerLink]="''">
+            Inicio
+        </li>
+        <li class="cursor-pointer" [routerLink]="'stores'">
+            Restaurantes
+        </li>
+        <li>
+            <span class="bg-slate-100 px-3 py-2.5 rounded-sm">
+                <i class="fa-solid fa-magnifying-glass mr-3 text-green-500"></i>
+                <input type="text" pInputText class="w-96 bg-transparent" placeholder="Busque por um item ou restaurante"/>
+            </span>
+        </li>
+        <li class="ml-auto bg-green-700 p-2 rounded text-white cursor-pointer" (click)="cartService.openCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            {{ cartService.getSubTotal | currency:'BRL' }}
+        </li>
+        <li class="cursor-pointer">
+            <i class="fa-solid fa-user"></i>
+        </li>
+    </ul>
+</div>
+
+<router-outlet></router-outlet>

@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("node_modules/@fortawesome/fontawesome-free/css/fontawesome.css");
+@import url("node_modules/@fortawesome/fontawesome-free/css/brands.css");
+@import url("node_modules/@fortawesome/fontawesome-free/css/solid.css");
+
 body {
     font-family: var(--font-family);
 }

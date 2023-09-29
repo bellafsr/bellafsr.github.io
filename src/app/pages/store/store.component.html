@@ -1,1 +1,157 @@
-<p>store works!</p>
+<div class="h-96 overflow-hidden mb-5">
+    <img src="../../../assets/store-bg.jpg" class="w-screen" alt="" />
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 flex items-center">
+            <div class="w-20 h-20 mr-5">
+                <img src="../../../assets/mcdonalds.jpg" alt="">
+            </div>
+            <div>
+                <h1 class="text-3xl font-semibold">Hamburgueria da Lulu</h1>
+            </div>
+            <div class="ml-5 font-semibold text-md text-yellow-500">
+                <i class="fa-regular fa-star ml-1"></i> 4.5
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <div class="flex gap-4 flex-wrap">
+                <div class="
+                    flex 
+                    justify-center 
+                    px-4
+                    py-3
+                    items-center
+                    border
+                    border-gray-300
+                    w-auto
+                    h-15
+                    rounded
+                ">
+                    <i class="fa-solid fa-person-biking mr-3"></i>
+                    <span>
+                       Entrega: 30 - 40min - <span class="text-green-600">Grátis</span>
+                    </span>
+                </div>
+                <div class="
+                    flex 
+                    justify-center 
+                    px-4
+                    py-3
+                    items-center
+                    border
+                    border-gray-300
+                    w-auto
+                    h-15
+                    rounded
+                    bg-green-700
+                    text-white
+                ">
+                    <i class="fa-solid fa-leaf mr-3"></i>
+                    <span>
+                       Entrega Verde
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-2xl font-semibold my-5">Nossos Hambúrgueres</h1>
+        </div>
+        <ng-container *ngTemplateOutlet="itemList; context: { $implicit: getHamburgueres }"></ng-container>
+        <div class="col-md-12 my-5">
+            <h1 class="text-2xl font-semibold">Sobremesas</h1>
+        </div>
+        <ng-container *ngTemplateOutlet="itemList; context: { $implicit: getDesserts }"></ng-container>
+        <div class="col-md-12 my-5">
+            <h1 class="text-2xl font-semibold">Bebidas</h1>
+        </div>
+        <ng-container *ngTemplateOutlet="itemList; context: { $implicit: getDrinks }"></ng-container>
+    </div>
+</div>
+
+<ng-template #itemList let-items>
+    <div class="col-md-4 mb-4" *ngFor="let item of items">
+        <div class="
+            h-52
+            shadow-md
+            rounded-md
+            border
+            hover:border-slate-400
+            border-slate-200
+            flex
+            gap-4
+            p-4
+            cursor-pointer
+        " 
+            (click)="openModal(item)"
+        >
+            <div class="flex flex-column justify-around">
+                <span class="font-semibold text-xl">{{ item.name }}</span>
+                <div class="my-2 text-md font-light">
+                    {{ item.description }}
+                </div>
+                <div class="text-lg font-semibold">
+                    {{ item.price | currency:'BRL' }}
+                </div>
+            </div> 
+        </div>
+    </div>
+</ng-template>
+
+<p-dialog 
+    [modal]="true"
+    [header]="activeItem.name"
+    (onHide)="closeModal()"
+    [(visible)]="modalVisible"
+    [style]="{width: '50vw'}"
+>
+    <div class="flex flex-col">
+       <p> {{ activeItem.description }} </p>
+       <p class="mt-4 font-semibold"> {{ activeItem.price | currency:'BRL' }}</p>
+    </div>
+    <ng-template pTemplate="footer">
+        <div class="flex gap-3 justify-end">
+            <div class="flex justify-between items-center border border-gray-300 w-32 h-10 rounded">
+                <button class="m-0 h-full text-green-700 px-2.5" (click)="decrementValue()">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <span>
+                    {{ value }}
+                </span>
+                <button class="m-0 h-full text-green-700 px-2.5" (click)="incrementValue()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div>
+                <button
+                    [disabled]="value === 0"
+                    (click)="addToCart()"
+                    class="
+                        m-0
+                        h-full
+                        rounded
+                        bg-green-600
+                        hover:bg-green-800
+                        disabled:bg-slate-300
+                        disabled:hover:bg-slate-300
+                        disabled:cursor-not-allowed
+                        text-white
+                        font-semibold
+                        px-5
+                    "
+                >
+                    <span class="mr-3">
+                        Adicionar
+                    </span>
+                    <span>
+                        {{ ( activeItem.price * value) | currency:'BRL' }}
+                    </span>    
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
